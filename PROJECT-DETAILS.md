@@ -95,16 +95,7 @@ Modes can be combined: `?facilitator=true&projector=true`
 
 ## Firebase Configuration
 
-```javascript
-const firebaseConfig = {
-  apiKey: "AIzaSyBYQrs1qu5vQAoKqVRx8u7xCSqQKkfG3Yo",
-  authDomain: "caaasa-idea-wall.firebaseapp.com",
-  projectId: "caaasa-idea-wall",
-  storageBucket: "caaasa-idea-wall.firebasestorage.app",
-  messagingSenderId: "698516642475",
-  appId: "1:698516642475:web:53934f81b73a9a7191b5ee"
-};
-```
+Firebase config is embedded in `public/index.html`. The API key is a **client-side identifier** (not a secret) — security is enforced by Firestore rules, not by hiding this key. See [Firebase docs on API key security](https://firebase.google.com/docs/projects/api-keys).
 
 ### Firestore Security Rules
 - **Read:** Anyone can read ideas
