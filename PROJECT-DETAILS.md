@@ -35,8 +35,8 @@ A Firebase-powered real-time Idea Wall for the CAAASA x TRPEC 60-minute student 
 - **Org:** Alexandria-s-Design
 
 ### Gamma Facilitator Presentation
-- **URL:** https://gamma.app/docs/dwwrunrqeavukgv
-- **Previous draft:** https://gamma.app/docs/otvbzqazhjjiebc
+- **URL (FINAL):** https://gamma.app/docs/n3xsjwms6h4p967
+- **Previous drafts:** https://gamma.app/docs/dwwrunrqeavukgv, https://gamma.app/docs/otvbzqazhjjiebc
 - **Theme:** Aurora (dark purple/navy)
 - **Slides:** 17 slides covering full 60-minute workshop flow
 - **Gamma account:** alexandriasworld1234@gmail.com
