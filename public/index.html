@@ -1,0 +1,1054 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CAAASA Idea Wall | Turn Your Ideas Into an AI App</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --navy: #0a1628;
+            --navy-light: #132040;
+            --navy-card: #1a2d4d;
+            --gold: #c9a84c;
+            --gold-light: #e8d48b;
+            --azure: #357df9;
+            --azure-light: #5a9bff;
+            --white: #f0f2f5;
+            --text-muted: #8899aa;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--navy);
+            color: var(--white);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* ===== HEADER ===== */
+        .header {
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+            border-bottom: 2px solid var(--gold);
+            padding: 1.5rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-left h1 {
+            font-size: 1.5rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -0.02em;
+        }
+
+        .header-left p {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-top: 0.15rem;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .idea-counter {
+            background: var(--navy-card);
+            border: 1px solid var(--gold);
+            border-radius: 12px;
+            padding: 0.5rem 1.2rem;
+            text-align: center;
+        }
+
+        .idea-counter .count {
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--gold);
+            line-height: 1;
+        }
+
+        .idea-counter .label {
+            font-size: 0.65rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        .view-toggle {
+            display: flex;
+            gap: 0.25rem;
+            background: var(--navy-card);
+            border-radius: 8px;
+            padding: 3px;
+        }
+
+        .view-toggle button {
+            padding: 0.4rem 0.8rem;
+            border: none;
+            border-radius: 6px;
+            background: transparent;
+            color: var(--text-muted);
+            font-size: 0.75rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .view-toggle button.active {
+            background: var(--azure);
+            color: white;
+        }
+
+        /* ===== SUBMIT SECTION ===== */
+        .submit-section {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .submit-card {
+            background: var(--navy-light);
+            border: 1px solid rgba(201, 168, 76, 0.3);
+            border-radius: 16px;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .submit-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--gold), var(--azure), var(--gold));
+        }
+
+        .submit-card h2 {
+            font-size: 1.3rem;
+            font-weight: 800;
+            margin-bottom: 0.3rem;
+        }
+
+        .submit-card .subtitle {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.35rem;
+        }
+
+        .form-group label {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            background: var(--navy);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 8px;
+            padding: 0.7rem 1rem;
+            color: var(--white);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            transition: border-color 0.2s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--azure);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 70px;
+        }
+
+        .user-statement {
+            background: rgba(53, 125, 249, 0.08);
+            border: 1px dashed var(--azure);
+            border-radius: 10px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .user-statement label {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--azure-light);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .user-statement .template {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            font-size: 0.9rem;
+            line-height: 2;
+        }
+
+        .user-statement .template span {
+            color: var(--text-muted);
+        }
+
+        .user-statement .template input {
+            background: var(--navy);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 6px;
+            padding: 0.3rem 0.6rem;
+            color: var(--gold-light);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.85rem;
+            width: 160px;
+            transition: border-color 0.2s;
+        }
+
+        .user-statement .template input:focus {
+            outline: none;
+            border-color: var(--azure);
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 0.9rem;
+            background: linear-gradient(135deg, var(--gold) 0%, #d4b655 100%);
+            color: var(--navy);
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            font-weight: 800;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.15s, box-shadow 0.15s;
+            letter-spacing: 0.02em;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 20px rgba(201, 168, 76, 0.4);
+        }
+
+        .submit-btn:active { transform: translateY(0); }
+
+        .submit-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .success-msg {
+            display: none;
+            text-align: center;
+            padding: 1.5rem;
+            animation: fadeIn 0.4s;
+        }
+
+        .success-msg.show { display: block; }
+
+        .success-msg .check {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .success-msg h3 {
+            color: var(--gold);
+            font-size: 1.2rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .success-msg p {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        .success-msg button {
+            margin-top: 1rem;
+            padding: 0.5rem 1.5rem;
+            background: var(--azure);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 700;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* ===== IDEA WALL ===== */
+        .wall-section {
+            max-width: 1400px;
+            margin: 1rem auto 3rem;
+            padding: 0 1.5rem;
+        }
+
+        .wall-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+        }
+
+        .wall-header h2 {
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: var(--white);
+        }
+
+        .wall-header .live-badge {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.75rem;
+            color: #4ade80;
+            font-weight: 600;
+        }
+
+        .live-dot {
+            width: 8px;
+            height: 8px;
+            background: #4ade80;
+            border-radius: 50%;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(0.8); }
+        }
+
+        .ideas-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1rem;
+        }
+
+        .idea-card {
+            background: var(--navy-light);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 12px;
+            padding: 1.25rem;
+            animation: slideUp 0.4s ease-out;
+            transition: border-color 0.2s, transform 0.2s;
+            position: relative;
+        }
+
+        .idea-card:hover {
+            border-color: var(--gold);
+            transform: translateY(-2px);
+        }
+
+        .idea-card .card-header {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 0.85rem;
+            color: var(--navy);
+            flex-shrink: 0;
+        }
+
+        .card-header .name {
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+
+        .card-header .time {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            margin-left: auto;
+        }
+
+        .idea-card .app-name {
+            font-size: 1.05rem;
+            font-weight: 800;
+            color: var(--gold);
+            margin-bottom: 0.4rem;
+        }
+
+        .idea-card .category-badge {
+            display: inline-block;
+            font-size: 0.65rem;
+            font-weight: 700;
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+            margin-bottom: 0.6rem;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+
+        .cat-homework { background: rgba(249,115,22,0.15); color: #fb923c; }
+        .cat-clubs { background: rgba(168,85,247,0.15); color: #c084fc; }
+        .cat-mental-health { background: rgba(34,197,94,0.15); color: #4ade80; }
+        .cat-language { background: rgba(59,130,246,0.15); color: #60a5fa; }
+        .cat-school-spirit { background: rgba(236,72,153,0.15); color: #f472b6; }
+        .cat-other { background: rgba(201,168,76,0.15); color: var(--gold); }
+
+        .idea-card .user-stmt {
+            font-size: 0.82rem;
+            color: rgba(240,242,245,0.8);
+            line-height: 1.5;
+            font-style: italic;
+            border-left: 2px solid var(--azure);
+            padding-left: 0.75rem;
+        }
+
+        .idea-card .fire-btn {
+            position: absolute;
+            bottom: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+            opacity: 0.5;
+            transition: opacity 0.2s, transform 0.2s;
+        }
+
+        .idea-card .fire-btn:hover {
+            opacity: 1;
+            transform: scale(1.2);
+        }
+
+        .idea-card .fire-btn.fired { opacity: 1; }
+
+        .fire-count {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            margin-left: 0.2rem;
+        }
+
+        /* ===== PROJECTOR/WALL-ONLY MODE ===== */
+        body.wall-mode .submit-section { display: none; }
+        body.wall-mode .header { padding: 1rem 2rem; }
+        body.wall-mode .ideas-grid {
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 1.2rem;
+        }
+
+        /* ===== EMPTY STATE ===== */
+        .empty-state {
+            text-align: center;
+            padding: 4rem 2rem;
+            color: var(--text-muted);
+        }
+
+        .empty-state .icon { font-size: 3rem; margin-bottom: 1rem; }
+        .empty-state h3 { color: var(--white); margin-bottom: 0.5rem; }
+
+        /* ===== ANIMATIONS ===== */
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 600px) {
+            .form-row { grid-template-columns: 1fr; }
+            .header { flex-direction: column; gap: 0.75rem; text-align: center; }
+            .user-statement .template { font-size: 0.8rem; }
+            .user-statement .template input { width: 120px; }
+        }
+
+        /* ===== FACILITATOR BADGE ===== */
+        .facilitator-bar {
+            display: none;
+            background: rgba(201, 168, 76, 0.1);
+            border: 1px solid var(--gold);
+            border-radius: 10px;
+            padding: 0.75rem 1rem;
+            margin-bottom: 1rem;
+            font-size: 0.8rem;
+            color: var(--gold-light);
+            text-align: center;
+        }
+
+        body.facilitator-mode .facilitator-bar { display: block; }
+
+        /* ===== PROJECTOR MODE ===== */
+        body.projector-mode .submit-section { display: none; }
+        body.projector-mode .view-toggle { display: none; }
+        body.projector-mode .header { padding: 1rem 2rem; }
+        body.projector-mode .ideas-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+        body.projector-mode .idea-card {
+            padding: 2rem;
+        }
+        body.projector-mode .idea-card .app-name {
+            font-size: 1.8rem;
+            margin-bottom: 0.6rem;
+        }
+        body.projector-mode .idea-card .user-stmt {
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+        body.projector-mode .idea-card .card-header .name {
+            font-size: 1.1rem;
+        }
+        body.projector-mode .idea-card .category-badge {
+            font-size: 0.8rem;
+            padding: 0.3rem 0.8rem;
+        }
+        body.projector-mode .idea-card .fire-btn { display: none; }
+        body.projector-mode .wall-section {
+            max-width: 1800px;
+        }
+
+        /* ===== DOT LEGEND (Projector Mode) ===== */
+        .dot-legend {
+            display: none;
+            max-width: 1800px;
+            margin: 0 auto 1.5rem;
+            padding: 0 1.5rem;
+        }
+        body.projector-mode .dot-legend { display: block; }
+        .dot-legend-inner {
+            display: flex;
+            justify-content: center;
+            gap: 2.5rem;
+            background: var(--navy-light);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 12px;
+            padding: 1rem 2rem;
+        }
+        .dot-legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-size: 1rem;
+            font-weight: 700;
+        }
+        .dot-circle {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+        .dot-gold { background: #c9a84c; }
+        .dot-blue { background: #357df9; }
+        .dot-green { background: #4ade80; }
+
+        /* ===== QR CODE ===== */
+        .qr-section {
+            display: none;
+            text-align: center;
+            padding: 0.75rem;
+        }
+        body.facilitator-mode .qr-section,
+        body.projector-mode .qr-section { display: block; }
+        .qr-section canvas {
+            border: 3px solid var(--gold);
+            border-radius: 12px;
+            padding: 8px;
+            background: white;
+        }
+        .qr-section .qr-label {
+            font-size: 0.85rem;
+            color: var(--gold-light);
+            font-weight: 700;
+            margin-top: 0.5rem;
+        }
+
+        /* ===== MICRO-PITCH PANEL ===== */
+        .pitch-panel {
+            display: none;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            padding: 0 1.5rem;
+        }
+        body.pitch-mode .pitch-panel,
+        body.facilitator-mode .pitch-panel { display: block; }
+        .pitch-card {
+            background: var(--navy-light);
+            border: 1px solid rgba(53, 125, 249, 0.3);
+            border-radius: 16px;
+            padding: 1.5rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .pitch-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--azure), var(--gold));
+        }
+        .pitch-card h3 {
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: var(--azure-light);
+            margin-bottom: 1rem;
+        }
+        .pitch-prompts {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+        }
+        .pitch-prompts li {
+            display: flex;
+            align-items: baseline;
+            gap: 0.6rem;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+        .pitch-prompts .num {
+            color: var(--gold);
+            font-weight: 800;
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+
+        /* ===== FACILITATOR CONTROLS ===== */
+        .facilitator-controls {
+            display: none;
+            max-width: 800px;
+            margin: 0 auto 1rem;
+            padding: 0 1.5rem;
+        }
+        body.facilitator-mode .facilitator-controls { display: block; }
+        .clear-wall-btn {
+            padding: 0.6rem 1.2rem;
+            background: rgba(239, 68, 68, 0.15);
+            border: 1px solid rgba(239, 68, 68, 0.5);
+            color: #ef4444;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 700;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .clear-wall-btn:hover {
+            background: rgba(239, 68, 68, 0.25);
+        }
+
+        /* ===== MOBILE RESPONSIVE ADDITIONS ===== */
+        @media (max-width: 600px) {
+            .user-statement .template input { width: 100%; min-width: 0; }
+            .user-statement .template { flex-direction: column; align-items: flex-start; }
+            .dot-legend-inner { flex-direction: column; gap: 0.75rem; align-items: center; }
+            body.projector-mode .ideas-grid { grid-template-columns: 1fr; }
+            .pitch-prompts li { font-size: 0.85rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header class="header">
+        <div class="header-left">
+            <h1>CAAASA Idea Wall</h1>
+            <p>Turn Your Ideas Into an AI App &mdash; The Right Path Educational Consulting</p>
+        </div>
+        <div class="header-right">
+            <div class="qr-section" id="qrSection">
+                <canvas id="qrCanvas"></canvas>
+                <div class="qr-label">Scan to Submit Your Idea</div>
+            </div>
+            <div class="idea-counter">
+                <div class="count" id="ideaCount">0</div>
+                <div class="label">Ideas</div>
+            </div>
+            <div class="view-toggle">
+                <button class="active" onclick="setView('submit')">Submit + Wall</button>
+                <button onclick="setView('wall')">Wall Only</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- SUBMIT FORM -->
+    <section class="submit-section" id="submitSection">
+        <div class="submit-card">
+            <h2>Drop Your App Idea</h2>
+            <p class="subtitle">What problem at your school are you going to solve?</p>
+
+            <div class="facilitator-bar">
+                Facilitator Mode &mdash; submitting on behalf of a student
+            </div>
+
+            <form id="ideaForm" onsubmit="submitIdea(event)">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Your Name</label>
+                        <input type="text" id="studentName" placeholder="First name or nickname" required>
+                    </div>
+                    <div class="form-group">
+                        <label>App Name</label>
+                        <input type="text" id="appName" placeholder="Give your app a name" required>
+                    </div>
+                </div>
+
+                <div class="form-group" style="margin-bottom: 1rem;">
+                    <label>Problem Category</label>
+                    <select id="category">
+                        <option value="homework">Homework &amp; Study</option>
+                        <option value="clubs">Clubs &amp; Communication</option>
+                        <option value="mental-health">Mental Health &amp; Wellness</option>
+                        <option value="language">Language &amp; Culture</option>
+                        <option value="school-spirit">School Spirit &amp; Community</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+
+                <div class="user-statement">
+                    <label>Your User Statement</label>
+                    <div class="template">
+                        <span>"My app is for</span>
+                        <input type="text" id="usFor" placeholder="who?" required>
+                        <span>who struggle with</span>
+                        <input type="text" id="usStruggle" placeholder="what problem?" required>
+                        <span>so they can</span>
+                        <input type="text" id="usSo" placeholder="what outcome?" required>
+                        <span>."</span>
+                    </div>
+                </div>
+
+                <div class="form-group" style="margin-bottom: 1.25rem;">
+                    <label>What's the AI-powered feature? (optional)</label>
+                    <textarea id="aiFeature" placeholder="What smart thing does your app do? (chatbot, recommender, generator, etc.)"></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn" id="submitBtn">
+                    Submit Your Idea
+                </button>
+            </form>
+
+            <div class="success-msg" id="successMsg">
+                <div class="check">&#10024;</div>
+                <h3>Idea Submitted!</h3>
+                <p>Your idea is now on the wall. Time to build it.</p>
+                <button onclick="resetForm()">Submit Another Idea</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- FACILITATOR CONTROLS -->
+    <div class="facilitator-controls">
+        <button class="clear-wall-btn" onclick="clearWall()">Clear All Ideas (Reset Wall)</button>
+    </div>
+
+    <!-- MICRO-PITCH PANEL -->
+    <div class="pitch-panel">
+        <div class="pitch-card">
+            <h3>Micro-Pitch Template (30-45 seconds)</h3>
+            <ol class="pitch-prompts">
+                <li><span class="num">1.</span> "The problem at our school is..."</li>
+                <li><span class="num">2.</span> "My app is for..."</li>
+                <li><span class="num">3.</span> "It helps by..."</li>
+                <li><span class="num">4.</span> "The AI part is smart because..."</li>
+                <li><span class="num">5.</span> "We designed it responsibly by..."</li>
+                <li><span class="num">6.</span> "Next step: we need feedback from..."</li>
+            </ol>
+        </div>
+    </div>
+
+    <!-- DOT LEGEND (Projector Mode) -->
+    <div class="dot-legend">
+        <div class="dot-legend-inner">
+            <div class="dot-legend-item">
+                <div class="dot-circle dot-gold"></div>
+                <span>"I'd download this"</span>
+            </div>
+            <div class="dot-legend-item">
+                <div class="dot-circle dot-blue"></div>
+                <span>"Smartest AI use"</span>
+            </div>
+            <div class="dot-legend-item">
+                <div class="dot-circle dot-green"></div>
+                <span>"Most responsible design"</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- IDEA WALL -->
+    <section class="wall-section">
+        <div class="wall-header">
+            <h2>The Wall</h2>
+            <div class="live-badge">
+                <div class="live-dot"></div>
+                Live
+            </div>
+        </div>
+        <div class="ideas-grid" id="ideasGrid">
+            <div class="empty-state" id="emptyState">
+                <div class="icon">&#128161;</div>
+                <h3>No ideas yet</h3>
+                <p>Be the first to drop your app idea!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- QR CODE GENERATOR (qrcode-generator by kazuhikoarase, MIT) -->
+    <script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.min.js"></script>
+    <script>
+        (function() {
+            // Generate QR code — update this URL after Firebase Hosting deploy
+            const appUrl = window.location.origin + window.location.pathname;
+            const qr = qrcode(0, 'M');
+            qr.addData(appUrl);
+            qr.make();
+            const canvas = document.getElementById('qrCanvas');
+            const size = 120;
+            canvas.width = size;
+            canvas.height = size;
+            const ctx = canvas.getContext('2d');
+            const cellSize = size / qr.getModuleCount();
+            for (let row = 0; row < qr.getModuleCount(); row++) {
+                for (let col = 0; col < qr.getModuleCount(); col++) {
+                    ctx.fillStyle = qr.isDark(row, col) ? '#0a1628' : '#ffffff';
+                    ctx.fillRect(col * cellSize, row * cellSize, cellSize + 1, cellSize + 1);
+                }
+            }
+        })();
+    </script>
+
+    <!-- FIREBASE -->
+    <script type="module">
+        import { initializeApp } from 'https://www.gstatic.com/firebasejs/11.7.3/firebase-app.js';
+        import { getFirestore, collection, addDoc, onSnapshot, doc, updateDoc, increment, query, orderBy, serverTimestamp, getDocs, deleteDoc } from 'https://www.gstatic.com/firebasejs/11.7.3/firebase-firestore.js';
+
+        // Firebase config — will be updated after project creation
+        const firebaseConfig = {
+            apiKey: "FIREBASE_API_KEY",
+            authDomain: "FIREBASE_PROJECT.firebaseapp.com",
+            projectId: "FIREBASE_PROJECT",
+            storageBucket: "FIREBASE_PROJECT.firebasestorage.app",
+            messagingSenderId: "FIREBASE_SENDER_ID",
+            appId: "FIREBASE_APP_ID"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        // Avatar colors
+        const avatarColors = [
+            '#c9a84c', '#357df9', '#f472b6', '#4ade80', '#fb923c',
+            '#c084fc', '#60a5fa', '#fbbf24', '#a78bfa', '#34d399'
+        ];
+
+        function getAvatarColor(name) {
+            let hash = 0;
+            for (let i = 0; i < name.length; i++) {
+                hash = name.charCodeAt(i) + ((hash << 5) - hash);
+            }
+            return avatarColors[Math.abs(hash) % avatarColors.length];
+        }
+
+        function timeAgo(timestamp) {
+            if (!timestamp) return 'just now';
+            const seconds = Math.floor((Date.now() - timestamp.toDate()) / 1000);
+            if (seconds < 60) return 'just now';
+            if (seconds < 3600) return Math.floor(seconds / 60) + 'm ago';
+            return Math.floor(seconds / 3600) + 'h ago';
+        }
+
+        const categoryLabels = {
+            'homework': 'Homework & Study',
+            'clubs': 'Clubs & Comm',
+            'mental-health': 'Mental Health',
+            'language': 'Language & Culture',
+            'school-spirit': 'School Spirit',
+            'other': 'Other'
+        };
+
+        // Submit idea
+        window.submitIdea = async function(e) {
+            e.preventDefault();
+            const btn = document.getElementById('submitBtn');
+            btn.disabled = true;
+            btn.textContent = 'Submitting...';
+
+            const idea = {
+                name: document.getElementById('studentName').value.trim(),
+                appName: document.getElementById('appName').value.trim(),
+                category: document.getElementById('category').value,
+                userFor: document.getElementById('usFor').value.trim(),
+                userStruggle: document.getElementById('usStruggle').value.trim(),
+                userSo: document.getElementById('usSo').value.trim(),
+                aiFeature: document.getElementById('aiFeature').value.trim(),
+                fires: 0,
+                createdAt: serverTimestamp()
+            };
+
+            try {
+                await addDoc(collection(db, 'ideas'), idea);
+                document.getElementById('ideaForm').style.display = 'none';
+                document.getElementById('successMsg').classList.add('show');
+            } catch (err) {
+                console.error('Submit error:', err);
+                alert('Error submitting — check your connection and try again.');
+            } finally {
+                btn.disabled = false;
+                btn.textContent = 'Submit Your Idea';
+            }
+        };
+
+        // Reset form
+        window.resetForm = function() {
+            document.getElementById('ideaForm').reset();
+            document.getElementById('ideaForm').style.display = 'block';
+            document.getElementById('successMsg').classList.remove('show');
+        };
+
+        // Fire (upvote) an idea
+        window.fireIdea = async function(id, btn) {
+            if (btn.classList.contains('fired')) return;
+            btn.classList.add('fired');
+            try {
+                await updateDoc(doc(db, 'ideas', id), { fires: increment(1) });
+            } catch (err) {
+                console.error('Fire error:', err);
+            }
+        };
+
+        // View toggle
+        window.setView = function(mode) {
+            const buttons = document.querySelectorAll('.view-toggle button');
+            buttons.forEach(b => b.classList.remove('active'));
+            if (mode === 'wall') {
+                document.body.classList.add('wall-mode');
+                buttons[1].classList.add('active');
+            } else {
+                document.body.classList.remove('wall-mode');
+                buttons[0].classList.add('active');
+            }
+        };
+
+        // Clear wall (facilitator only)
+        window.clearWall = async function() {
+            if (!confirm('Are you sure you want to delete ALL ideas from the wall? This cannot be undone.')) return;
+            if (!confirm('Really clear everything? This will permanently remove all student submissions.')) return;
+            try {
+                const snapshot = await getDocs(collection(db, 'ideas'));
+                const deletePromises = [];
+                snapshot.forEach((docSnap) => {
+                    deletePromises.push(deleteDoc(doc(db, 'ideas', docSnap.id)));
+                });
+                await Promise.all(deletePromises);
+                alert('Wall cleared! Ready for a new session.');
+            } catch (err) {
+                console.error('Clear error:', err);
+                alert('Error clearing wall: ' + err.message);
+            }
+        };
+
+        // URL params
+        const params = new URLSearchParams(window.location.search);
+        if (params.get('view') === 'wall') {
+            window.setView('wall');
+        }
+        if (params.get('facilitator') === 'true') {
+            document.body.classList.add('facilitator-mode');
+        }
+        if (params.get('projector') === 'true') {
+            document.body.classList.add('projector-mode');
+        }
+        if (params.get('pitch') === 'true') {
+            document.body.classList.add('pitch-mode');
+        }
+
+        // Real-time listener
+        const q = query(collection(db, 'ideas'), orderBy('createdAt', 'desc'));
+        onSnapshot(q, (snapshot) => {
+            const grid = document.getElementById('ideasGrid');
+            const empty = document.getElementById('emptyState');
+
+            if (snapshot.empty) {
+                empty.style.display = 'block';
+                // Remove idea cards but keep empty state
+                document.querySelectorAll('.idea-card').forEach(c => c.remove());
+                document.getElementById('ideaCount').textContent = '0';
+                return;
+            }
+
+            empty.style.display = 'none';
+
+            // Clear and rebuild
+            document.querySelectorAll('.idea-card').forEach(c => c.remove());
+
+            let count = 0;
+            snapshot.forEach((docSnap) => {
+                count++;
+                const d = docSnap.data();
+                const color = getAvatarColor(d.name);
+                const initial = d.name.charAt(0).toUpperCase();
+                const catClass = 'cat-' + (d.category || 'other');
+                const catLabel = categoryLabels[d.category] || 'Other';
+                const userStatement = `"My app is for ${d.userFor} who struggle with ${d.userStruggle} so they can ${d.userSo}."`;
+
+                const card = document.createElement('div');
+                card.className = 'idea-card';
+                card.innerHTML = `
+                    <div class="card-header">
+                        <div class="avatar" style="background: ${color}">${initial}</div>
+                        <span class="name">${escapeHtml(d.name)}</span>
+                        <span class="time">${timeAgo(d.createdAt)}</span>
+                    </div>
+                    <div class="app-name">${escapeHtml(d.appName)}</div>
+                    <span class="category-badge ${catClass}">${catLabel}</span>
+                    <div class="user-stmt">${escapeHtml(userStatement)}</div>
+                    ${d.aiFeature ? `<p style="font-size:0.78rem;color:var(--text-muted);margin-top:0.5rem;">AI: ${escapeHtml(d.aiFeature)}</p>` : ''}
+                    <button class="fire-btn" onclick="fireIdea('${docSnap.id}', this)">
+                        &#128293;<span class="fire-count">${d.fires || 0}</span>
+                    </button>
+                `;
+                grid.appendChild(card);
+            });
+
+            document.getElementById('ideaCount').textContent = count;
+        });
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+    </script>
+</body>
+</html>
