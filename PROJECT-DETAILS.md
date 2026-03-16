@@ -38,7 +38,7 @@ A Firebase-powered real-time Idea Wall for the CAAASA x TRPEC 60-minute student 
 - **URL (FINAL):** https://gamma.app/docs/n3xsjwms6h4p967
 - **Previous drafts:** https://gamma.app/docs/dwwrunrqeavukgv, https://gamma.app/docs/otvbzqazhjjiebc
 - **Theme:** Aurora (dark purple/navy)
-- **Slides:** 17 slides covering full 60-minute workshop flow
+- **Slides:** 16 slides (original "What's Next" contact slide removed — no direct contact info for students)
 - **Gamma account:** alexandriasworld1234@gmail.com
 
 ---
@@ -69,7 +69,9 @@ Modes can be combined: `?facilitator=true&projector=true`
 | 45-48 min | Responsible AI Guardrails | 12 |
 | 48-52 min | Gallery Walk + Dot Voting + Pitch Prep | 13-14 |
 | 52-58 min | Student Pitches | 15 |
-| 58-60 min | Closing + What's Next | 16-17 |
+| 58-60 min | Closing | 16 |
+
+**Note:** "What's Next" slide with contact info was removed — no direct contact info shown to students. Presentation is now 16 slides.
 
 ### Gallery Walk Dot Colors
 - **Gold** = "I'd download this"
