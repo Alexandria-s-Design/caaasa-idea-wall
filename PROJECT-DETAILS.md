@@ -35,10 +35,12 @@ A Firebase-powered real-time Idea Wall for the CAAASA x TRPEC 60-minute student 
 - **Org:** Alexandria-s-Design
 
 ### Gamma Facilitator Presentation
-- **URL (FINAL):** https://gamma.app/docs/n3xsjwms6h4p967
-- **Previous drafts:** https://gamma.app/docs/dwwrunrqeavukgv, https://gamma.app/docs/otvbzqazhjjiebc
+- **URL (FINAL):** https://gamma.app/docs/po36u3b1ovil3gq
+- **Previous drafts:** https://gamma.app/docs/n3xsjwms6h4p967, https://gamma.app/docs/dwwrunrqeavukgv, https://gamma.app/docs/otvbzqazhjjiebc
 - **Theme:** Aurora (dark purple/navy)
-- **Slides:** 16 slides (original "What's Next" contact slide removed — no direct contact info for students)
+- **Slides:** 16 slides, structured around IDEO Human-Centered Design (Inspiration → Ideation → Implementation)
+- **Intro video:** https://vimeo.com/106505300 (IDEO "What is Human-Centered Design?" — embedded on Slide 3)
+- **No student-facing contact info** (removed by design)
 - **Gamma account:** alexandriasworld1234@gmail.com
 
 ---
@@ -59,19 +61,18 @@ Modes can be combined: `?facilitator=true&projector=true`
 
 ## Workshop Flow (60 minutes)
 
-| Time | Activity | Slide |
-|------|----------|-------|
-| 0-2 min | Hook + intro | 1-2 |
-| 2-10 min | Design thinking, HCD, Design Justice, Power Check | 3-6 |
-| 10-12 min | Choose Your Quest (3 tracks) | 7 |
-| 12-20 min | Ideate + User Statement + Submit to Wall | 8-10 |
-| 20-45 min | Prototype Time (build with AI tools) | 11 |
-| 45-48 min | Responsible AI Guardrails | 12 |
-| 48-52 min | Gallery Walk + Dot Voting + Pitch Prep | 13-14 |
-| 52-58 min | Student Pitches | 15 |
-| 58-60 min | Closing | 16 |
+### Structure: IDEO Human-Centered Design
 
-**Note:** "What's Next" slide with contact info was removed — no direct contact info shown to students. Presentation is now 16 slides.
+| Phase | Time | Activity | Slides |
+|-------|------|----------|--------|
+| **OPENING** | 0-5 min | Title, Hook, HCD video (Vimeo) | 1-3 |
+| **INSPIRATION** | 5-20 min | Design Justice, Power Check, Micro-Interviews, User Statement | 4-8 |
+| **IDEATION** | 20-45 min | Choose Quest, Submit to Idea Wall, Prototype (15 min), AI Guardrails | 9-13 |
+| **IMPLEMENTATION** | 45-60 min | Pitch to get partnerships, Gallery Walk + Dots, Micro-Pitches, Closing | 14-16 |
+
+**Inspiration** = Listen, observe, empathize. Students write/draw ideas as they watch the IDEO video and discuss.
+**Ideation** = Generate ideas, build prototypes. Firebase Idea Wall explained as real-world prototyping tool.
+**Implementation** = Pitch your idea to get partnerships and get it into the world.
 
 ### Gallery Walk Dot Colors
 - **Gold** = "I'd download this"
