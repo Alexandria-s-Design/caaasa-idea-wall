@@ -35,8 +35,8 @@ A Firebase-powered real-time Idea Wall for the CAAASA x TRPEC 60-minute student 
 - **Org:** Alexandria-s-Design
 
 ### Gamma Facilitator Presentation
-- **URL (FINAL):** https://gamma.app/docs/nwuitdhhweh87gu
-- **Previous drafts:** https://gamma.app/docs/po36u3b1ovil3gq, https://gamma.app/docs/n3xsjwms6h4p967, https://gamma.app/docs/dwwrunrqeavukgv, https://gamma.app/docs/otvbzqazhjjiebc
+- **URL (FINAL):** https://gamma.app/docs/d2lh694bunmp6d7
+- **Previous drafts:** https://gamma.app/docs/nwuitdhhweh87gu, https://gamma.app/docs/po36u3b1ovil3gq, https://gamma.app/docs/n3xsjwms6h4p967, https://gamma.app/docs/dwwrunrqeavukgv, https://gamma.app/docs/otvbzqazhjjiebc
 - **Theme:** Aurora (dark purple/navy)
 - **Slides:** 13 slides, activity-focused, structured around IDEO HCD (Inspiration → Ideation → Implementation)
 - **Intro video:** https://vimeo.com/106505300 (IDEO "What is Human-Centered Design?" — Slide 3, unmute manually)
@@ -69,12 +69,12 @@ Modes can be combined: `?facilitator=true&projector=true`
 | Phase | Time | Activity | Slides |
 |-------|------|----------|--------|
 | **OPENING** | 0-5 min | Title, Hook, HCD video (Vimeo) | 1-3 |
-| **INSPIRATION** | 5-20 min | Design Justice, Power Check, Micro-Interviews, User Statement | 4-8 |
-| **IDEATION** | 20-45 min | Choose Quest, Submit to Idea Wall, Prototype (15 min), AI Guardrails | 9-13 |
-| **IMPLEMENTATION** | 45-60 min | Pitch to get partnerships, Gallery Walk + Dots, Micro-Pitches, Closing | 14-16 |
+| **INSPIRATION** | 5-20 min | What is Design + Design Justice, Micro-Interviews, User Statement, Submit to Idea Wall | 4-6 |
+| **IDEATION** | 20-45 min | Firebase intro (Charles walkthrough), Build on Firebase with AI prompts, Peer Evaluation | 7-9 |
+| **IMPLEMENTATION** | 45-60 min | Pitch It, Shared Pitch Deck, Gallery Walk + Dots, Closing | 10-13 |
 
-**Inspiration** = Listen, observe, empathize. Students write/draw ideas as they watch the IDEO video and discuss.
-**Ideation** = Generate ideas, build prototypes. Firebase Idea Wall explained as real-world prototyping tool.
+**Inspiration** = Listen, observe, empathize. Students write/draw ideas, micro-interview, craft user statement.
+**Ideation** = ALL students build on Firebase. Dr. Charles Martin walks through Firebase. Students use AI prompts to create and iterate prototypes. No separate app tracks.
 **Implementation** = Pitch your idea to get partnerships and get it into the world.
 
 ### Gallery Walk Dot Colors
