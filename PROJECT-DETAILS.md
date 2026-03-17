@@ -35,12 +35,15 @@ A Firebase-powered real-time Idea Wall for the CAAASA x TRPEC 60-minute student 
 - **Org:** Alexandria-s-Design
 
 ### Gamma Facilitator Presentation
-- **URL (FINAL):** https://gamma.app/docs/po36u3b1ovil3gq
-- **Previous drafts:** https://gamma.app/docs/n3xsjwms6h4p967, https://gamma.app/docs/dwwrunrqeavukgv, https://gamma.app/docs/otvbzqazhjjiebc
+- **URL (FINAL):** https://gamma.app/docs/nwuitdhhweh87gu
+- **Previous drafts:** https://gamma.app/docs/po36u3b1ovil3gq, https://gamma.app/docs/n3xsjwms6h4p967, https://gamma.app/docs/dwwrunrqeavukgv, https://gamma.app/docs/otvbzqazhjjiebc
 - **Theme:** Aurora (dark purple/navy)
-- **Slides:** 16 slides, structured around IDEO Human-Centered Design (Inspiration → Ideation → Implementation)
-- **Intro video:** https://vimeo.com/106505300 (IDEO "What is Human-Centered Design?" — embedded on Slide 3)
+- **Slides:** 13 slides, activity-focused, structured around IDEO HCD (Inspiration → Ideation → Implementation)
+- **Intro video:** https://vimeo.com/106505300 (IDEO "What is Human-Centered Design?" — Slide 3, unmute manually)
+- **Shared Pitch Deck:** https://1drv.ms/p/c/13aeeccf2094d532/IQDPH44ymK8oQoTFc-IfdSP-AavZGv1n94aLssNAvD5Hg6s?e=reo6er (OneDrive, editable by all)
+- **Pitch Deck file:** `OneDrive/Documents/CAAASA-Student-Pitch-Deck.pptx` (32 slides: title + instructions + 30 student slots)
 - **No student-facing contact info** (removed by design)
+- **Design style:** Numbered step cards, tables, callout bars — activity-focused, minimal lecture
 - **Gamma account:** alexandriasworld1234@gmail.com
 
 ---
